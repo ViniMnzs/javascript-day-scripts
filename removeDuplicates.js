@@ -8,12 +8,10 @@ function script() {
   arr.reduce((_, current) => {
     const filtered = result.find(e => e.document === current.document);
 
-    if (filtered) {
-      return;
+    if (!filtered) {
+      result.push(current)
     }
-    else {
-      return result.push(current)
-    }
+    return;
   }, [])
 
   return fs.writeFileSync('file.json', JSON.stringify(result, null, 2));
